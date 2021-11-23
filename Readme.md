@@ -1,7 +1,7 @@
 # Проект «Киноман»
 
-* Студент: [Иван Менченков](https://up.htmlacademy.ru/ecmascript/16/user/1253939).
-* Наставник: `Неизвестно`.
+* Студент: [Иван Менченков](https://htmlacademy.ru/profile/id1253939).
+* Наставник: [Артём Рудов](https://htmlacademy.ru/profile/artrudov).
 
 ---
 
