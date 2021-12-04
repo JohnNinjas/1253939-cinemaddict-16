@@ -5,10 +5,11 @@ import { getFilterTemplate } from './view/filter-view';
 import { createFilmsTemplate } from './view/film-list-title-view';
 import { getFilmCardTemplate } from './view/film-card-view';
 import { getShowMoreTemplate } from './view/show-more-view.js';
-import { getAboutFilmTemplate } from './view/about-film-view';
+// import { getAboutFilmTemplate } from './view/about-film-view';
 import { getStatisticsTemplate } from './view/statistics-view';
+import { films } from './mock/film';
+import { FIVE } from './helpers/consts';
 
-const MAX_CARD_COUNT = 5;
 
 const header = document.querySelector('.header');
 renderTemplate(header, getuserRankTemplate());
@@ -25,10 +26,10 @@ renderTemplate(footerStatistics, getStatisticsTemplate());
 
 const filmsListContainer = filmsList.querySelector('.films-list__container');
 
-for (let i = 0; i < MAX_CARD_COUNT; ++i) {
-  renderTemplate(filmsListContainer, getFilmCardTemplate());
+for (let i = 0; i < FIVE; ++i) {
+  renderTemplate(filmsListContainer, getFilmCardTemplate(films[i]));
 }
 
 renderTemplate(filmsList, getShowMoreTemplate());
 
-renderTemplate(document.body, getAboutFilmTemplate());
+// renderTemplate(document.body, getAboutFilmTemplate());
