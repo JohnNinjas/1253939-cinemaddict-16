@@ -6,26 +6,26 @@ import { getFilmsListTemplate } from './view/film-list-title-view';
 import { getFilmCardTemplate } from './view/film-card-view';
 import { getAboutFilmTemplate } from './view/about-film-view';
 import { getStatisticsTemplate } from './view/statistics-view';
+import { generateFilter } from './mock/filters';
 import { films } from './mock/film';
 import { FIVE } from './helpers/consts';
 import { getShowMoreButton } from './helpers/utils';
 
-
 const header = document.querySelector('.header');
-const footer = document.querySelector('.footer');
-renderTemplate(header, getuserRankTemplate());
-
 const main = document.querySelector('.main');
-renderTemplate(main, getFiltersTemplate());
+const footer = document.querySelector('.footer');
+const footerStatistics = document.querySelector('.footer__statistics');
+const filters = generateFilter(films);
+
+renderTemplate(header, getuserRankTemplate());
+renderTemplate(main, getFiltersTemplate(filters));
 renderTemplate(main, getSortTemplate());
 renderTemplate(main, getFilmsListTemplate());
 
 const filmsList = main.querySelector('.films-list');
-
-const footerStatistics = document.querySelector('.footer__statistics');
-renderTemplate(footerStatistics, getStatisticsTemplate());
-
 const filmsListContainer = filmsList.querySelector('.films-list__container');
+
+renderTemplate(footerStatistics, getStatisticsTemplate());
 
 for (let i = 0; i < FIVE; ++i) {
   renderTemplate(filmsListContainer, getFilmCardTemplate(films[i]));

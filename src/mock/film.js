@@ -1,4 +1,4 @@
-import { FIVE, FILM_NUMBER } from '/src/helpers/consts';
+import { FILM_NUMBER } from '/src/helpers/consts';
 import {
   getRandomInteger,
   getObjectData,
