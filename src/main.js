@@ -4,11 +4,11 @@ import { getFiltersTemplate } from '/src/view/filters-view';
 import { getSortTemplate } from '/src/view/sort-view';
 import { getFilmsListTemplate } from './view/film-list-title-view';
 import { getFilmCardTemplate } from './view/film-card-view';
-import { getShowMoreTemplate } from './view/show-more-view.js';
 import { getAboutFilmTemplate } from './view/about-film-view';
 import { getStatisticsTemplate } from './view/statistics-view';
 import { films } from './mock/film';
 import { FIVE } from './helpers/consts';
+import { getShowMoreButton } from './helpers/utils';
 
 
 const header = document.querySelector('.header');
@@ -31,8 +31,6 @@ for (let i = 0; i < FIVE; ++i) {
   renderTemplate(filmsListContainer, getFilmCardTemplate(films[i]));
 }
 
-renderTemplate(filmsList, getShowMoreTemplate());
-
 const showFilmInfo = () => {
   const filmCards = document.querySelectorAll('.film-card');
   filmCards.forEach((filmCard, index) => {
@@ -50,5 +48,22 @@ document.addEventListener('click', (event) => {
     aboutFilmBlock.remove();
   }
 });
+
+if (films.length > FIVE) {
+  let renderCount = FIVE;
+  renderTemplate(filmsListContainer, getShowMoreButton());
+
+  const showMoreBtn = filmsListContainer.querySelector('.films-list__show-more');
+  showMoreBtn.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    films.slice(renderCount, renderCount + FIVE).forEach((film) => renderTemplate(filmsListContainer, getFilmCardTemplate(film)));
+    renderCount += FIVE;
+
+    if (renderCount >= films.length) {
+      showMoreBtn.remove();
+    }
+    showFilmInfo();
+  });
+}
 
 showFilmInfo();

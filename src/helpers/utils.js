@@ -9,10 +9,8 @@ import {
   FIVE,
   MAX_FILM_DURATION_IN_HOURS,
   MAX_FILM_DURATION_IN_MINUTES,
-  TWO,
-  THREE,
 } from './consts';
-import { descriptions, writters } from './data';
+import { descriptions } from './data';
 
 export const getRandomInteger = (a = ZERO, b = ONE) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -60,6 +58,8 @@ export const getShortDescription = (text, count) => {
   return textContent;
 };
 
-export const getWrittersNumber = () => writters.slice(ONE, getRandomInteger(TWO, THREE));
-
 export const getRating =  () => (Math.random() * (FLOAT_ZERO - FLOAT_TEN) + FLOAT_TEN).toFixed(ONE);
+
+export const getShowMoreButton = () => (
+  '<button class="films-list__show-more">Show more</button>'
+);

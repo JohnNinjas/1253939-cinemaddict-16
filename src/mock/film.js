@@ -1,11 +1,10 @@
-import { FIVE } from '/src/helpers/consts';
+import { FIVE, FILM_NUMBER } from '/src/helpers/consts';
 import {
   getRandomInteger,
   getObjectData,
   getDescription,
   getRating,
   getFilmDuration,
-  getWrittersNumber,
   commentNumber,
   releaseDate,
   commentDate,
@@ -48,4 +47,4 @@ export const filmCardData = () => ({
   isAddedToFavorite: Boolean(getRandomInteger()),
 });
 
-export const films = Array.from({length: FIVE}, filmCardData);
+export const films = Array.from({length: FILM_NUMBER}, filmCardData);

@@ -12,6 +12,7 @@ export const ONE = 1;
 export const TWO = 2;
 export const THREE = 3;
 export const FIVE = 5;
+export const FILM_NUMBER = 20;
 export const MAX_NUMBER_OF_SYMBOLS_FOR_SHORT_DESCRIPTION = 139;
 export const MAX_FILM_DURATION_IN_HOURS = 3;
 export const MAX_FILM_DURATION_IN_MINUTES = 60;
