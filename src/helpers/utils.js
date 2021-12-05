@@ -9,53 +9,10 @@ import {
   FIVE,
   MAX_FILM_DURATION_IN_HOURS,
   MAX_FILM_DURATION_IN_MINUTES,
-} from '/src/helpers/consts';
-
-export const titles = [
-  'Made for Each Other',
-  'Popeye Meets Sinbad',
-  'Sagebrush Trail',
-  'Santa Claus Conquers the Martians',
-  'The Dance of Life',
-  'The Great Flamarion',
-  'The Man with the Golden Arm',
-];
-
-export const posterNames = [
-  'made-for-each-other.png',
-  'popeye-meets-sinbad.png',
-  'sagebrush-trail.jpg',
-  'santa-claus-conquers-the-martians.jpg',
-  'the-dance-of-life.jpg',
-  'the-great-flamarion.jpg',
-  'the-man-with-the-golden-arm.jpg',
-];
-
-const descriptions = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  'Cras aliquet varius magna, non porta ligula feugiat eget.',
-  'Fusce tristique felis at fermentum pharetra.',
-  'Aliquam id orci ut lectus varius viverra.',
-  'Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.',
-];
-
-export const genres = [
-  'Romcom',
-  'Sci-Fi',
-  'Horror ',
-  'Documentary ',
-  'Animation',
-  'Action',
-  'Thriller',
-  'Drama ',
-  'Comedy',
-  'Adventure',
-  'Musical',
-  'Silent Film',
-  'Gangster Film',
-  'Detective',
-  'Western',
-];
+  TWO,
+  THREE,
+} from './consts';
+import { descriptions, writters } from './data';
 
 export const getRandomInteger = (a = ZERO, b = ONE) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -63,6 +20,8 @@ export const getRandomInteger = (a = ZERO, b = ONE) => {
 
   return Math.floor(lower + Math.random() * (upper - lower + ONE));
 };
+
+export const commentDate =`${getRandomInteger(2010, 2021)}/${getRandomInteger(1, 12)}/${getRandomInteger(1, 30)} ${getRandomInteger(0, 23)}:${getRandomInteger(0, 59)}`;
 
 export const getObjectData = (dataValues) => {
   const randomIndex = getRandomInteger(ZERO, dataValues.length - ONE);
@@ -90,5 +49,17 @@ export const getFilmDuration = () => {
 export const commentNumber = generateArray(ZERO, (getRandomInteger(ZERO, MAX_NUMBER_OF_COMMENTS)));
 export const releaseDate = generateArray(MIN_RELEASE_DATE, (getRandomInteger(MIN_RELEASE_DATE, MAX_RELEASE_DATE)));
 
-export const getDescription = () => descriptions.slice(ZERO, getRandomInteger(ONE, FIVE));
+export const getDescription = () => `${descriptions.slice(ZERO, getRandomInteger(ONE, FIVE))}`;
+export const getShortDescription = (text, count) => {
+  let textContent = text ? text : '';
+
+  if (textContent.length > count) {
+    textContent = `${textContent.substring(0, count)  }...`;
+  }
+
+  return textContent;
+};
+
+export const getWrittersNumber = () => writters.slice(ONE, getRandomInteger(TWO, THREE));
+
 export const getRating =  () => (Math.random() * (FLOAT_ZERO - FLOAT_TEN) + FLOAT_TEN).toFixed(ONE);
