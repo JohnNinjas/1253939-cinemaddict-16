@@ -10,17 +10,19 @@ import {
   commentDate,
 } from '/src/helpers/utils';
 import {
-  titles,
-  posterNames,
-  genres,
   directors,
   actors,
   writters,
   countries,
   emojies,
-  commentContent,
   commentAuthorName,
   ageRating,
+} from '/src/helpers/consts';
+import {
+  titles,
+  posterNames,
+  genres,
+  commentContent,
 } from '/src/helpers/data';
 
 export const filmCardData = () => ({

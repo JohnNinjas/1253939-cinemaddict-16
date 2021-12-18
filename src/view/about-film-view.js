@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 
 const createCommentTemplate = (comments) => {
-
   const { commentAuthor, date, emoji, commentContent } = comments;
   const fullDate = dayjs(date).format('YYYY/MM/D H:mm');
 

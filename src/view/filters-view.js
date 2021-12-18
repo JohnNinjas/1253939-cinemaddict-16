@@ -1,8 +1,11 @@
 const createNavigationItemTemplate = (filter) => {
   const { name, count } = filter;
+  const filterName = name.substring(0, 1).toUpperCase() + name.substring(1);
 
   return (`
-    <a href="#${name}" class="main-navigation__item">${name.substring(0, 1).toUpperCase() + name.substring(1)} <span class="main-navigation__item-count">${count}</span></a>
+    <a href="#${name}" class="main-navigation__item">${filterName}
+        <span class="main-navigation__item-count">${count}</span>
+    </a>
   `);
 };
 

@@ -1,11 +1,3 @@
-export const emojies = ['angry.png', 'puke.png', 'sleeping.png', 'smile.png'];
-export const commentAuthorName = ['Commentator#1', 'Commentator#2', 'Commentator#3', 'Commentator#4', 'Commentator#5', 'Commentator#6'];
-export const writters = ['The Coen Brothers', 'Oliver Stone', 'Oliver Stone', 'Francis Ford Coppola', 'Quentin Tarantino'];
-export const actors = ['Robert De Niro','Jack Nicholson', 'Marlon Brando', 'Katharine Hepburn', 'Katharine Hepburn','Meryl Streep'];
-export const countries = ['Russia', 'German', 'USA', 'France', 'United Kingdom'];
-export const directors = ['Steven Spielberg','Peter Jackson', 'Michael Bay','James Cameron', 'David Yates', 'Christopher Nolan'];
-export const ageRating = ['6+', '18+', '3+', '21+', '0+'];
-
 export const titles = [
   'Made for Each Other',
   'Popeye Meets Sinbad',
