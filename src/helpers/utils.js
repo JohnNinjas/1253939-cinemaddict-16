@@ -11,9 +11,11 @@ import {
   MAX_DAYS_OF_COMMENT_DATE,
   MAX_HOURS_OF_COMMENT_DATE,
   MIN_VALUE_OF_FILM_RATING,
-  MAX_VALUE_OF_FILM_RATING,
+  MAX_VALUE_OF_FILM_RATING, renderPosition,
 } from './consts';
 import { descriptions } from './data';
+import AboutFilmView from '../view/about-film-view';
+import { renderElement } from '../helpers/renderTemplate';
 
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -75,4 +77,19 @@ export const getShortDescription = (text, count) => {
 
 export const getRating =  () => (Math.random() * (MIN_VALUE_OF_FILM_RATING - MAX_VALUE_OF_FILM_RATING) + MAX_VALUE_OF_FILM_RATING).toFixed(1);
 
+const renderPopup = (data) => {
+  const popup = new AboutFilmView(data);
+  const footer = document.querySelector('.footer');
 
+  renderElement(footer, popup.element, renderPosition.BEFORE_END);
+};
+
+export const openPopup = (elem, data) => {
+  elem.addEventListener('click', () => {
+    const popup = document.querySelector('.film-details');
+
+    popup?.remove();
+    renderPopup(data);
+    document.body.classList.add('hide-overflow');
+  });
+};
