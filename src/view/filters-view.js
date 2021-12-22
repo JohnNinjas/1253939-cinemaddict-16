@@ -1,3 +1,5 @@
+import { createElement } from '/src/helpers/renderTemplate';
+
 const createNavigationItemTemplate = (filter) => {
   const { name, count } = filter;
   const filterName = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -9,7 +11,7 @@ const createNavigationItemTemplate = (filter) => {
   `);
 };
 
-export const getFiltersTemplate = (filterItems) => {
+const getFiltersTemplate = (filterItems) => {
   const filterItemsTemplate = filterItems
     .map((filter, index) => createNavigationItemTemplate(filter, index === 0))
     .join('');
@@ -24,3 +26,28 @@ export const getFiltersTemplate = (filterItems) => {
     </nav>`
   );
 };
+
+export default class FiltersView {
+  #element = null;
+  #film = null;
+
+  constructor(film) {
+    this.#film = film;
+  }
+
+  get template() {
+    return getFiltersTemplate(this.#film);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

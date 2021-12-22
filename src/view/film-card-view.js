@@ -1,5 +1,6 @@
 import { getShortDescription } from '/src/helpers/utils';
 import { MAX_NUMBER_OF_SYMBOLS_FOR_SHORT_DESCRIPTION } from '/src/helpers/consts';
+import { createElement } from '/src/helpers/renderTemplate';
 
 const getFilmCardTemplate = (filmData) => {
   const {
@@ -37,5 +38,27 @@ const getFilmCardTemplate = (filmData) => {
   </article>`;
 };
 
+export default class FilmCardView {
+  #element = null;
+  #film = null;
 
-export { getFilmCardTemplate };
+  constructor(film) {
+    this.#film = film;
+  }
+
+  get template() {
+    return getFilmCardTemplate(this.#film);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}
