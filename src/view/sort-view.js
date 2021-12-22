@@ -1,3 +1,5 @@
+import { createElement } from '/src/helpers/renderTemplate';
+
 const getSortTemplate = () => (
   `<ul class="sort">
     <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
@@ -6,4 +8,22 @@ const getSortTemplate = () => (
   </ul>`
 );
 
-export { getSortTemplate };
+export default class SortView {
+  #element = null;
+
+  get template() {
+    return getSortTemplate();
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

@@ -1,3 +1,5 @@
+import { createElement } from '/src/helpers/renderTemplate';
+
 const getFilmsListTemplate = () => (
   `<section class="films">
     <section class="films-list">
@@ -8,4 +10,22 @@ const getFilmsListTemplate = () => (
   </section>`
 );
 
-export { getFilmsListTemplate };
+export default class FilmListTitleView {
+  #element = null;
+
+  get template() {
+    return getFilmsListTemplate();
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

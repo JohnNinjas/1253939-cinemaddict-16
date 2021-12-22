@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { createElement } from '/src/helpers/renderTemplate';
 
 const createCommentTemplate = (comments) => {
   const { commentAuthor, date, emoji, commentContent } = comments;
@@ -138,3 +139,28 @@ export const getAboutFilmTemplate = (aboutFilm) => {
       </section>`
   );
 };
+
+export default class AboutFilmView {
+  #element = null;
+  #film = null;
+
+  constructor(film) {
+    this.#film = film;
+  }
+
+  get template() {
+    return getAboutFilmTemplate(this.#film);
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}
