@@ -1,8 +1,8 @@
 export const renderPosition = {
-  BEFORE_BEGIN: 'beforebegin',
-  AFTER_BEGIN: 'afterbegin',
-  BEFORE_END: 'beforeend',
-  AFTER_END: 'afterend',
+  BEFORE_BEGIN: 'before',
+  AFTER_BEGIN: 'prepend',
+  BEFORE_END: 'append',
+  AFTER_END: 'after',
 };
 
 export const MIN_VALUE_OF_FILM_RATING = 0.0;

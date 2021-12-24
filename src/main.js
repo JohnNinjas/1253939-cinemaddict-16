@@ -11,16 +11,24 @@ import FilmCardView from './view/film-card-view';
 import StatisticsView from './view/statistics-view';
 import EmptyFilmListView from './view/empty-film-list-view';
 
-if (films.length > 0) {
-  const header = document.querySelector('.header');
-  const main = document.querySelector('.main');
-  const footerStatistics = document.querySelector('.footer__statistics');
-  const filters = generateFilter(films);
+const header = document.querySelector('.header');
+const main = document.querySelector('.main');
+const footerStatistics = document.querySelector('.footer__statistics');
+const filters = generateFilter(films);
+const userRankView = new UserRankView();
+const filtersView = new FiltersView(filters);
+const sortView = new SortView();
+const filmListTitleView = new FilmListTitleView();
 
-  renderElement(header, new UserRankView().element, renderPosition.BEFORE_END);
-  renderElement(main, new FiltersView(filters).element, renderPosition.BEFORE_END);
-  renderElement(main, new SortView().element, renderPosition.BEFORE_END);
-  renderElement(main, new FilmListTitleView().element, renderPosition.BEFORE_END);
+const getShowMoreButton = () => (
+  '<button class="films-list__show-more">Show more</button>'
+);
+
+if (films.length > 0) {
+  renderElement(header, userRankView.element, renderPosition.BEFORE_END);
+  renderElement(main, filtersView.element, renderPosition.BEFORE_END);
+  renderElement(main, sortView.element, renderPosition.BEFORE_END);
+  renderElement(main, filmListTitleView.element, renderPosition.BEFORE_END);
 
   const filmsList = main.querySelector('.films-list');
   const filmsListContainer = filmsList.querySelector('.films-list__container');
@@ -33,10 +41,6 @@ if (films.length > 0) {
     renderElement(filmsListContainer, filmCard.element, renderPosition.BEFORE_END);
     openPopup(filmCard.element, films[i]);
   }
-
-  const getShowMoreButton = () => (
-    '<button class="films-list__show-more">Show more</button>'
-  );
 
   document.addEventListener('click', (event) => {
     const aboutFilmBlock = document.querySelector('.film-details');
