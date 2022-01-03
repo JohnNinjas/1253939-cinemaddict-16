@@ -11,7 +11,8 @@ import {
   MAX_DAYS_OF_COMMENT_DATE,
   MAX_HOURS_OF_COMMENT_DATE,
   MIN_VALUE_OF_FILM_RATING,
-  MAX_VALUE_OF_FILM_RATING, renderPosition,
+  MAX_VALUE_OF_FILM_RATING,
+  renderPosition,
 } from './consts';
 import { descriptions } from './data';
 import AboutFilmView from '../view/about-film-view';

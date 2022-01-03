@@ -10,6 +10,7 @@ import FilmListTitleView from './view/film-list-title-view';
 import FilmCardView from './view/film-card-view';
 import StatisticsView from './view/statistics-view';
 import EmptyFilmListView from './view/empty-film-list-view';
+import ShowMoreButton from './view/show-more-btn-view';
 
 const header = document.querySelector('.header');
 const main = document.querySelector('.main');
@@ -19,10 +20,8 @@ const userRankView = new UserRankView();
 const filtersView = new FiltersView(filters);
 const sortView = new SortView();
 const filmListTitleView = new FilmListTitleView();
+const showMoreBtnView = new ShowMoreButton();
 
-const getShowMoreButton = () => (
-  '<button class="films-list__show-more">Show more</button>'
-);
 
 if (films.length > 0) {
   renderElement(header, userRankView.element, renderPosition.BEFORE_END);
@@ -62,11 +61,10 @@ if (films.length > 0) {
 
   if (films.length > MAX_FILM_COUNT) {
     let renderCount = MAX_FILM_COUNT;
-    renderTemplate(filmsListContainer, getShowMoreButton());
+    renderElement(filmsListContainer, showMoreBtnView.element, renderPosition.BEFORE_END);
 
     const showMoreBtn = filmsListContainer.querySelector('.films-list__show-more');
-    showMoreBtn.addEventListener('click', (evt) => {
-      evt.preventDefault();
+    showMoreBtnView.setClickHandler(() => {
       films.slice(renderCount, renderCount + MAX_FILM_COUNT).forEach((film) => renderElement(filmsListContainer, new FilmCardView(film).element, renderPosition.BEFORE_END));
       renderCount += MAX_FILM_COUNT;
       main.appendChild(showMoreBtn);
