@@ -1,4 +1,4 @@
-import { renderElement, renderTemplate } from './helpers/renderTemplate';
+import { renderElement } from './helpers/renderTemplate';
 import { generateFilter } from './mock/filters';
 import { openPopup } from './helpers/utils';
 import { films } from './mock/film';
