@@ -82,7 +82,7 @@ const renderPopup = (data) => {
   const popup = new AboutFilmView(data);
   const footer = document.querySelector('.footer');
 
-  renderElement(footer, popup.element, renderPosition.BEFORE_END);
+  renderElement(footer, popup.element);
 };
 
 export const openPopup = (elem, data) => {

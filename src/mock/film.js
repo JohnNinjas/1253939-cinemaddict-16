@@ -1,4 +1,5 @@
 import { FILM_NUMBER } from '/src/helpers/consts';
+import { nanoid } from 'nanoid';
 import {
   getRandomInteger,
   getObjectData,
@@ -26,6 +27,7 @@ import {
 } from '/src/helpers/data';
 
 export const filmCardData = () => ({
+  id: nanoid(),
   title: getObjectData(titles),
   originalTitle: getObjectData(titles),
   poster: getObjectData(posterNames),
